@@ -48,24 +48,14 @@ def dist_between_loc(loc1, loc2):
     #        2pi = 360도
     return
 
-# 두 도시 간의 거리를 반환하는 함수
-def dist_between_city(city1, city2):
-    """
-    :param city1: 도시 정보1
-    :param city2: 도시 정보2
-    :return: 두 도시간의 거리
-    """
-    #
-
-    return
 
 # 'cities.txt' 파일로 부터
 # 도시의 이름 (나라 제외)    <- str
-# (위도, 경도) : loc      <- tuple
-# (city_name, loc)) 의 list 만들어 반환하는 함수
+# (위도, 경도) loc      <- tuple
+# {도시의 이름 : loc} 의 딕셔너리를 만들어 반환하는 함수
 def get_cities():
     """
-    :return: 도시정보 (city_name, (longitude, latitude)) 들의 리스트
+    :return: 도시정보 {key = city_name : value = (longitude, latitude) } 모은 딕셔너리
     """
     # 파일 열기
     # 경로 ./cities.txt
@@ -73,9 +63,9 @@ def get_cities():
         # 파일 열기에 실패한 경우 빈 리스트 반환
         return []
 
-    # 빈 리스트를 만들어
-    # (name, (latitude, longitude)) 를 모으기
-
+    # 빈 딕셔너리를 만들어
+    # key = name, value = (latitude, longitude)
+    # 형태로 DB 구축하기
     while True:
         # 한 줄씩 읽기
 
@@ -86,31 +76,31 @@ def get_cities():
         # 읽어들이 line 을 적절히 나누기
 
         # '도시이름, 나라' 에서 도시 이름만 추출
-        name = lineStr[0].split(',')[0]
+
         # 위도와 경도를 숫자 형태로 저장
 
 
-        # tuple 로 만들어 모기
+        # 위치를 tuple 로 만들어 딕셔너리에 모으기
 
-    # 파일 닫기ㅇ
+    # 파일 닫기
 
-    # 모은 도시 정보 반환하기
+    # 모은 도시 정보 딕셔너리 반환하기
     return
 
 
-# 도시 정보를 이름으로 가져오기
+# 도시 위치를 이름으로 가져오기
 def get_city_by_name(cities, name):
     """
-    :param cities: 도시들의 리스트 (get_cities 애서 받은)
+    :param cities: 도시 정보의 딕셔너리 (get_cities 애서 받은)
     :param name: 찾고자 하는 도시의 이름
-    :return: (도시이름, (도시 위치)) <- get_cities 에서 만든
+    :return: (도시 위치) <- (latitude, longitude)
     """
-    # cities 에 있는 모든 도시들을 차례로 훑어 보기
+    # cities 에 찾는 도시가 있는지 체크
 
-        # 같은 이름의 도시를 찾는다면 그 도시에 해당하는 도시 정보 반환
+        # 같은 이름의 도시가 있다면 위치 반환
 
-    # 같은 이름의 도시가 없다면 None 반환
-    return None
+        # 같은 이름의 도시가 없다면 None 반환
+        return None
 
 
 # 사용자에게 두 도시의 이름을 입력받아 거리를 출력하는 프로그램
@@ -151,12 +141,13 @@ def city_dist():
             # 두 번째 도시 새로 입력 받음
 
         # 입력 받은 두 도시의 거리를 출력
-        # 구현한 dist_between_city() 함수 사용
+        # 구현한 dist_between_loc() 함수 사용
 
     # 아무것도 반환하지 않음
-    return
 
 
+
+""" 아래는 신경쓰지 않으셔도 됩니다. """
 # 사용자에게 두 위치의 위도 경도를 각각 입력 받아 거리를 출력하는 프로그램
 def loc_dist():
     """
