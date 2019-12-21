@@ -3,11 +3,6 @@ import traceback
 
 
 def print_term(degree, factor):
-    """
-    :param degree: 항의 차수 (int, 음이 아닌 정수)
-    :param factor: 항의 계수 (int)
-    :return: (str)
-    """
     f, d = factor, degree
     term = ""
 
@@ -30,10 +25,6 @@ def print_term(degree, factor):
 
 
 def print_equation(terms):
-    """
-    :param terms: dict (key=degree, value=factor)
-    :return: str
-    """
     term_str = []
     for d, f in terms.items():
         term_str.append(print_term(d, f))
@@ -42,10 +33,6 @@ def print_equation(terms):
 
 
 def parse_term(term_str):
-    """
-    :param term_str: str
-    :return: (degree: int, factor: int)
-    """
     if term_str.endswith('(x)'):
         d = term_str[-6:]
         f_str = term_str[:-6]
@@ -66,10 +53,6 @@ def parse_term(term_str):
 
 
 def parse_equation(equation):
-    """
-    :param equation: str
-    :return: dict (key=degree, value=factor)
-    """
     terms = {}
     for term_str in equation.split(" + "):
         d, f = parse_term(term_str)
@@ -79,11 +62,6 @@ def parse_equation(equation):
 
 
 def d_dx_as_terms(terms):
-    """
-    :param terms: dict (key=degree, value=factor)
-    :return: terms와 동일한 형식이되,
-    그 값이 terms의 미분인 것
-    """
     derivative = {}
 
     for d, f in terms.items():
@@ -103,10 +81,6 @@ def d_dx_as_terms(terms):
 
 
 def d_dx(equation):
-    """
-    :param equation: str
-    :return: str
-    """
     terms = parse_equation(equation)
     terms = d_dx_as_terms(terms)
     return print_equation(terms)

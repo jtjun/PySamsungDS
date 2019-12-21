@@ -2,7 +2,8 @@ import math
 import traceback
 
 # from wolfram_beta import solve
-from sample_complete import solve
+# from sample_complete import solve
+from sample_complete2 import solve
 from sample_complete import parse_equation
 
 input_path = 'text/input.txt'
